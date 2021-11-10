@@ -2,22 +2,28 @@ var teste
 carregarJogosUbisoft()
 
 function carregarJogosUbisoft() {
+    document.getElementById('loading').style.display = 'block'
     fetch("json/ubisoft.json").then(function (response) {
         response.json().then(function (data) {
             montarJogosUbisoft(data)
+            document.getElementById('loading').style.display = 'none'
         });
     }).catch(function (err) {
         console.error('Failed retrieving information', err);
+        document.getElementById('loading').style.display = 'none'
     });
 }
 
 function carregarJogosSteam() {
+    document.getElementById('loading').style.display = 'block'
     fetch("json/steam.json").then(function (response) {
         response.json().then(function (data) {
             montarJogosSteam(data)
+            document.getElementById('loading').style.display = 'none'
         });
     }).catch(function (err) {
         console.error('Failed retrieving information', err);
+        document.getElementById('loading').style.display = 'none'
     });
 }
 
