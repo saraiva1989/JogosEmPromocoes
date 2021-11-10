@@ -1,0 +1,109 @@
+:root {
+    --fundo-botao-loja: #0000004b;
+    --fundo: #000000ad;
+    --texto: #ffffff;
+}
+
+p, h1, h2, h3, h4, h5{
+    color: var(--texto);
+}
+
+body {
+    margin: 0px;
+    background: var(--fundo);
+    font-family: sans-serif;
+}
+
+#principal {
+    padding: 20px;
+}
+
+.botao-lojas {
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: var(--fundo-botao-loja);
+    border-radius: 50px 0px;
+    box-shadow: 4px 8px #00000079;
+}
+
+.botao-lojas:hover {
+    box-shadow: 8px 16px #00000079;
+    transition: 0.3s;
+}
+
+.btn-img {
+    background-size: 150px 130px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.steam {
+    background-image: url(../img/steam-white-logo.png);
+}
+
+.ubisoft {
+    background-image: url(../img/ubisoft-white-logo.png);
+}
+
+#lojas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 #03030333;
+    transition: 0.3s;
+    width: 340px;
+    height: 670px;
+    background: #00000066;
+    margin: 40px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 #03030333;
+    margin: 30px 50px;
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }
+
+  .card .capa{
+      width: 100%;
+  }
+
+  #conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  stroke {
+    text-decoration: line-through;
+    font-size: 26px;
+    color: #bbb4b4;
+  }
+  
+  .price {
+    text-align:right;
+    font-size: 36px;
+    color: #f1730c;
+    position: absolute;
+  }
+
+  .container .titulo {
+      margin-top: 4px;
+      font-size: 26px;
+  }
+
+  .container .versao {
+    margin-top: -10px;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/geral.css">
+    <title>Promoções</title>
+</head>
+
+<body>
+    <div id="principal">
+        <div id="lojas">
+            <div id="loja-steam" class="botao-lojas btn-img steam">
+            </div>
+            <div id="loja-ubisoft" class="botao-lojas btn-img ubisoft">
+            </div>
+        </div>
+
+        <div id="filtro">espaço para filtro</div>
+
+        <div id="conteudo">
+            <div class="card">
+                <a href="https://google.com">
+                    <img src="https://store.ubi.com/dw/image/v2/ABBS_PRD/on/demandware.static/-/Sites-masterCatalog/default/dwbbc7ab19/images/large/5fc623ef0d253c3a1475adba.jpg?sw=300&sh=395&sm=fit"
+                        alt="capa" class="capa">
+                    <div class="container">
+                        <h2 class="titulo"><b>Assassins creed</b></h2>
+                        <p class="versao">Complete Edition</p>
+                        <p class="price"><span>12,00</span>
+                            <stroke>20,00</stroke>
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://google.com" target="_blank">
+                    <img src="https://store.ubi.com/dw/image/v2/ABBS_PRD/on/demandware.static/-/Sites-masterCatalog/default/dwbbc7ab19/images/large/5fc623ef0d253c3a1475adba.jpg?sw=300&sh=395&sm=fit"
+                        alt="capa" class="capa">
+                    <div class="container">
+                        <h2 class="titulo"><b>Assassins creed</b></h2>
+                        <p class="versao">Complete Edition</p>
+                        
+                        <p class="price"><span>12,00</span>
+                            <stroke>20,00</stroke>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         carregarJogos()
+        function carregarJogos() {
+
+            fetch("json/ubisoft.json").then(function (response) {
+                response.json().then(function (data) {
+                    montarJogos(data)
+                });
+            }).catch(function (err) {
+                console.error('Failed retrieving information', err);
+            });
+        }
+
+
+        function montarJogos(data){
+            divConteudo = document.getElementById('conteudo')
+            htmlRetorno = ''
+            data.forEach(element => {
+                htmlRetorno += `
+
+                <div class="card">
+                    <a href=${element.linkLoja} target="_blank">
+                        <img src=${element.capa}
+                            alt="capa" class="capa">
+                        <div class="container">
+                            <h2 class="titulo"><b>${element.nome}</b></h2>
+                            <p class="versao">${element.versao}</p>
+                            <p class="price"><span>${element.precoDesconto}</span>
+                                <stroke>${element.precoOriginal}</stroke>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                `
+            });
+
+            divConteudo.innerHTML = htmlRetorno
+        }
+    </script>
+</body>
+
+</html>
