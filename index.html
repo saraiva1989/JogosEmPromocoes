@@ -12,13 +12,15 @@
 <body>
     <div id="principal">
         <div id="lojas">
-            <div id="loja-steam" class="botao-lojas btn-img steam">
+            <div id="loja-ubisoft" class="botao-lojas btn-img ubisoft" onclick="carregarJogosUbisoft()">
             </div>
-            <div id="loja-ubisoft" class="botao-lojas btn-img ubisoft">
+            <div id="loja-steam" class="botao-lojas btn-img steam" onclick="carregarJogosSteam()">
             </div>
         </div>
 
-        <div id="filtro">espaço para filtro</div>
+        <div id="filtro" style="display: none;">
+            <p>espaço para filtro</p>
+        </div>
 
         <div id="conteudo">
             <div class="card">
@@ -41,7 +43,7 @@
                     <div class="container">
                         <h2 class="titulo"><b>Assassins creed</b></h2>
                         <p class="versao">Complete Edition</p>
-                        
+
                         <p class="price"><span>12,00</span>
                             <stroke>20,00</stroke>
                         </p>
@@ -51,46 +53,7 @@
         </div>
     </div>
 
-    <script>
-         carregarJogos()
-        function carregarJogos() {
-
-            fetch("json/ubisoft.json").then(function (response) {
-                response.json().then(function (data) {
-                    montarJogos(data)
-                });
-            }).catch(function (err) {
-                console.error('Failed retrieving information', err);
-            });
-        }
-
-
-        function montarJogos(data){
-            divConteudo = document.getElementById('conteudo')
-            htmlRetorno = ''
-            data.forEach(element => {
-                htmlRetorno += `
-
-                <div class="card">
-                    <a href=${element.linkLoja} target="_blank">
-                        <img src=${element.capa}
-                            alt="capa" class="capa">
-                        <div class="container">
-                            <h2 class="titulo"><b>${element.nome}</b></h2>
-                            <p class="versao">${element.versao}</p>
-                            <p class="price"><span>${element.precoDesconto}</span>
-                                <stroke>${element.precoOriginal}</stroke>
-                            </p>
-                        </div>
-                    </a>
-                </div>
-
-                `
-            });
-
-            divConteudo.innerHTML = htmlRetorno
-        }
-    </script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

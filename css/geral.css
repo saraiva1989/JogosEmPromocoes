@@ -28,9 +28,11 @@ body {
 }
 
 .botao-lojas:hover {
-    box-shadow: 8px 16px #00000079;
+    box-shadow: 0px 0px #00000079;
     transition: 0.3s;
 }
+
+
 
 .btn-img {
     background-size: 150px 130px;
@@ -59,6 +61,11 @@ body {
     height: 670px;
     background: #00000066;
     margin: 40px;
+  }
+
+  .card.steam {
+    width: 340px;
+    height: 370px;
   }
   
   .card:hover {
@@ -106,4 +113,56 @@ body {
 
 a {
     text-decoration: none;
+}
+
+
+@media only screen and (max-width: 460px) {
+    #principal {
+        padding: 0px;
+    }
+
+   
+    .botao-lojas {
+        margin: 20px;
+        width: 100px;
+        height: 100px;
+    }
+
+    
+.card {
+    box-shadow: 0 4px 8px 0 #03030333;
+    transition: 0.3s;
+    width: 340px;
+    height: 570px;
+    background: #00000066;
+    margin: 40px;
+  }
+
+    .card.steam {
+        width: 280px;
+        height: 300px;
+    }
+
+    .btn-img {
+        background-size: 50px 50px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 30px 0px;
+    }
+
+    stroke {
+        font-size: 16px;
+      }
+      
+      .price {
+        font-size: 26px;
+      }
+    
+      .container .titulo {
+          font-size: 20px;
+      }
+    
+      .container .versao {
+        font-size: 18px;
+    }
 }
