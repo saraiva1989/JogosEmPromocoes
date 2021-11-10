@@ -1,6 +1,6 @@
 var listaJogosJson = []
 var teste
-if (window.location.href.includes('free')) {
+if(window.location.href.includes('free')) {
     MontarJsonJogosGratuito()
 }
 else {
@@ -8,8 +8,8 @@ else {
 }
 
 function MontarJsonJogosPromocao() {
-
-    var todosJogos = document.querySelectorAll(`#search-result-items li`)
+    
+    var todosJogos = document.querySelectorAll(`.samples #search-result-items li`)
     todosJogos.forEach(element => {
         try {
             teste = element
@@ -45,8 +45,8 @@ function MontarJsonJogosPromocao() {
 }
 
 function MontarJsonJogosGratuito() {
-
-    var todosJogos = document.querySelectorAll(`#search-result-items li`)
+    
+    var todosJogos = document.querySelectorAll(`.samples #search-result-items li`)
     todosJogos.forEach(element => {
         try {
             teste = element
