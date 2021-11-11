@@ -3,7 +3,7 @@ carregarJogosUbisoft()
 
 function carregarJogosUbisoft() {
     document.getElementById('loading').style.display = 'block'
-    fetch("json/ubisoft.json?2").then(function (response) {
+    fetch("json/ubisoft.json?3").then(function (response) {
         response.json().then(function (data) {
             montarJogosUbisoft(data)
             document.getElementById('loading').style.display = 'none'
@@ -16,7 +16,7 @@ function carregarJogosUbisoft() {
 
 function carregarJogosSteam() {
     document.getElementById('loading').style.display = 'block'
-    fetch("json/steam.json?2").then(function (response) {
+    fetch("json/steam.json?3").then(function (response) {
         response.json().then(function (data) {
             montarJogosSteam(data)
             document.getElementById('loading').style.display = 'none'
@@ -36,7 +36,7 @@ function montarJogosUbisoft(data) {
 
                 <div class="card">
                     <a href=${element.linkLoja} target="_blank">
-                        <img src=${element.capa}
+                        <img src=${element.capa} loading=lazy
                             alt="capa" class="capa">
                         <div class="container">
                             <h2 class="titulo"><b>${element.nome}</b></h2>
@@ -62,7 +62,7 @@ function montarJogosSteam(data) {
 
                 <div class="card steam">
                     <a href=${element.linkLoja} target="_blank">
-                        <img src=${element.capa}
+                        <img src=${element.capa} loading=lazy
                             alt="capa" class="capa">
                         <div class="container">
                             <h2 class="titulo"><b>${element.nome}</b></h2>
