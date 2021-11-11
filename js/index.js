@@ -3,7 +3,7 @@ carregarJogosUbisoft()
 
 function carregarJogosUbisoft() {
     document.getElementById('loading').style.display = 'block'
-    fetch("json/ubisoft.json").then(function (response) {
+    fetch("json/ubisoft.json?2").then(function (response) {
         response.json().then(function (data) {
             montarJogosUbisoft(data)
             document.getElementById('loading').style.display = 'none'
@@ -16,7 +16,7 @@ function carregarJogosUbisoft() {
 
 function carregarJogosSteam() {
     document.getElementById('loading').style.display = 'block'
-    fetch("json/steam.json").then(function (response) {
+    fetch("json/steam.json?2").then(function (response) {
         response.json().then(function (data) {
             montarJogosSteam(data)
             document.getElementById('loading').style.display = 'none'
