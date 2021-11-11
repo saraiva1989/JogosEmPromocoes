@@ -25,6 +25,9 @@ body {
     background-color: var(--fundo-botao-loja);
     border-radius: 50px 0px;
     box-shadow: 4px 8px #00000079;
+    grid-row: 1;
+    grid-column: auto;
+ 
 }
 
 .botao-lojas:hover {
@@ -48,10 +51,20 @@ body {
     background-image: url(../img/ubisoft-white-logo.png);
 }
 
+.epic {
+    background-image: url(../img/epic-white-logo.png);
+}
+
+
 #lojas{
     display: grid;
-    grid-template-columns: 1fr 1fr;
     place-items: center;
+    place-content: center;
+    overflow: auto;
+    grid-auto-columns: max-content;
+    grid-template-rows: 1fr;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 .card {
@@ -141,11 +154,17 @@ a {
   }
   
 
+
+
+/* CELULAR */
 @media only screen and (max-width: 460px) {
     #principal {
         padding: 0px;
     }
 
+    #lojas {
+        place-content: unset;
+    }
    
     .botao-lojas {
         margin: 20px;

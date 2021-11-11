@@ -42,6 +42,7 @@ function MontarJsonJogosPromocao() {
             console.log(error)
         }
     })
+    console.log(listaJogosJson)
 }
 
 function MontarJsonJogosGratuito() {
@@ -74,4 +75,5 @@ function MontarJsonJogosGratuito() {
             console.log(error)
         }
     })
+    console.log(listaJogosJson)
 }
