@@ -1,5 +1,7 @@
 var listaJogosJson = []
 var teste
+let position = 0
+
 if(window.location.href.includes('free')) {
     MontarJsonJogosGratuito()
 }
@@ -28,12 +30,13 @@ function MontarJsonJogosPromocao() {
                     nome: nome != null ? nome.textContent.trim() : null,
                     capa: capa,
                     versao: versao != null ? versao.textContent.trim() : null,
-                    precoOriginal: precoOriginal != null ? precoOriginal.textContent.trim() : null,
-                    precoDesconto: precoDesconto != null ? precoDesconto.textContent.trim() : null,
+                    precoOriginal: precoOriginal != null ? precoOriginal.textContent.trim().replace('R$','') : null,
+                    precoDesconto: precoDesconto != null ? precoDesconto.textContent.trim().replace('R$','') : null,
                     percentualDesconto: percentualDesconto != null ? percentualDesconto.textContent.trim() : null,
                     linkLoja: linkLoja,
                     loja: "ubisoft",
                     gratuito: false,
+                    position: position++,
                     tipoGratuito: null
                 })
             }
@@ -67,6 +70,7 @@ function MontarJsonJogosGratuito() {
                     linkLoja: linkLoja,
                     loja: "ubisoft",
                     gratuito: true,
+                    position: position++,
                     tipoGratuito: tipoGratuito != null ? tipoGratuito.textContent.trim() : null
                 })
             }

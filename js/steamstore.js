@@ -1,5 +1,7 @@
 var listaJogosJson = []
 var teste
+let position = 0
+
 if (window.location.href.includes('Free')) {
     MontarJsonJogosGratuito()
 }
@@ -18,19 +20,20 @@ function MontarJsonJogosPromocao() {
             let capa = montarImagem(element.querySelector('img').src)
             let versao = null
             let precoOriginal = element.querySelector('strike')
-            let precoDesconto = `R$${element.querySelector('.discounted').textContent.split('R$')[2].trim()}`
+            let precoDesconto = `${element.querySelector('.discounted').textContent.split('R$')[2].trim()}`
             let percentualDesconto = element.querySelector('.search_discount span')
             let linkLoja = element.href
             listaJogosJson.push({
                 nome: nome != null ? nome.textContent.trim() : null,
                 capa: capa,
                 versao: versao != null ? versao.textContent.trim() : null,
-                precoOriginal: precoOriginal != null ? precoOriginal.textContent.trim() : null,
+                precoOriginal: precoOriginal != null ? precoOriginal.textContent.trim().replace('R$','') : null,
                 precoDesconto: precoDesconto,
                 percentualDesconto: percentualDesconto != null ? percentualDesconto.textContent.trim() : null,
                 linkLoja: linkLoja,
                 loja: "steam",
                 gratuito: false,
+                position: position++,
                 tipoGratuito: null
             })
         }
@@ -59,6 +62,7 @@ function MontarJsonJogosGratuito() {
                 linkLoja: linkLoja,
                 loja: "steam",
                 gratuito: true,
+                position: position++,
                 tipoGratuito: tipoGratuito != null ? tipoGratuito.textContent.trim() : null,
             })
         }

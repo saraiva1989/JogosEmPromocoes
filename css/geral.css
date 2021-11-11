@@ -4,7 +4,18 @@
     --texto: #ffffff;
 }
 
-p, h1, h2, h3, h4, h5{
+
+.price {
+    text-align:right;
+    font-size: 36px;
+    position: absolute;
+  }
+
+.price span {
+    color: #f1730c;
+}
+
+p, h1, h2, h3, h4, h5, span{
     color: var(--texto);
 }
 
@@ -60,6 +71,15 @@ body {
 }
 
 
+#ordem {
+    height: 44px;
+    width: 70%;
+    background: #0000004b;
+    color: #fff;
+    border-radius: 20px;
+    text-align-last: center;
+    font-size: 20px;
+}
 
 #lojas{
     display: grid;
@@ -70,6 +90,10 @@ body {
     grid-template-rows: 1fr;
     width: 100%;
     justify-content: space-evenly;
+}
+
+#filtro {
+    margin: 16px;
 }
 
 .card {
@@ -112,12 +136,6 @@ body {
     color: #bbb4b4;
   }
   
-  .price {
-    text-align:right;
-    font-size: 36px;
-    color: #f1730c;
-    position: absolute;
-  }
 
   .container .titulo {
       margin-top: 4px;
