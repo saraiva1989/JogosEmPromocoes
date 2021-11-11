@@ -5,7 +5,7 @@ carregarJogosUbisoft()
 
 function carregarJogos(url) {
     loading(true)
-    fetch(url + "?4").then(function (response) {
+    fetch(url + "?5").then(function (response) {
         response.json().then(function (data) {
             listaJogosData = data
             montarJogos(listaJogosData)

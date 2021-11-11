@@ -1,6 +1,11 @@
 var listaJogosJson = []
-var teste
 let position = 0
+if(localStorage.getItem('listaJogos') != null && localStorage.getItem('position') != null){
+    listaJogosJson = JSON.parse(localStorage.getItem('listaJogos'))
+    position = localStorage.getItem('position')
+}
+var teste
+
 
 if (window.location.href.includes('free')) {
     MontarJsonJogosGratuito()
@@ -43,6 +48,8 @@ function MontarJsonJogosPromocao() {
             console.log(error)
         }
     })
+    localStorage.setItem('listaJogos', JSON.stringify(listaJogosJson))
+    localStorage.setItem('position', position)
     console.log(listaJogosJson)
 }
 
@@ -81,6 +88,8 @@ function MontarJsonJogosGratuito() {
             console.log(error)
         }
     })
+    localStorage.setItem('listaJogos', JSON.stringify(listaJogosJson))
+    localStorage.setItem('position', position)
     console.log(listaJogosJson)
 }
 
