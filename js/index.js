@@ -1,11 +1,12 @@
 var teste
 let listaJogosData
 let store
+let itensPagina = 0;
 carregarJogosUbisoft()
 
 function carregarJogos(url) {
     loading(true)
-    fetch(url + "?5").then(function (response) {
+    fetch(url + "?6").then(function (response) {
         response.json().then(function (data) {
             listaJogosData = data
             montarJogos(listaJogosData)
@@ -42,8 +43,7 @@ function montarJogos(data) {
     divConteudo = document.getElementById('conteudo')
     htmlRetorno = ''
     if (store == 'Steam') {
-        debugger
-        data = data.slice(0, 200)
+        data = data.slice(itensPagina, itensPagina + 200)
     }
     data.forEach(element => {
 
@@ -83,6 +83,12 @@ function montarJogos(data) {
 
 
 function loading(status) {
+    if(store == 'Steam') {
+        document.getElementById('btn-vermais').style.display = 'block'
+    }else {
+        document.getElementById('btn-vermais').style.display = 'none'
+    }
+    itensPagina = 0
     document.getElementById('ordem').value = 'popular'
     document.querySelector('#loja-selecionada h2').textContent = `Loja Selecionada: ${store}`
     if (status) {
@@ -99,7 +105,7 @@ function ordenacao(tipo) {
     }
 
     if (tipo == "preco") {
-        listaJogosData.sort((a, b) => parseFloat(a.precoDesconto) - parseFloat(b.precoDesconto));
+        listaJogosData.sort((a, b) => parseFloat(a.precoDesconto.replace(',', '.')) - parseFloat(b.precoDesconto.replace(',', '.')));
     }
 
     if (tipo == "nome") {
@@ -119,6 +125,12 @@ function ordenacao(tipo) {
 
     montarJogos(listaJogosData)
 
+}
+
+function verMais() {
+    itensPagina += 200
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    ordenacao('popular')
 }
 
 //listaJogosJson.sort((a, b) => parseFloat(a.precoDesconto) - parseFloat(b.precoDesconto));

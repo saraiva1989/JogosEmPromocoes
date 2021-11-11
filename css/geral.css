@@ -70,6 +70,28 @@ body {
     background-image: url(../img/gog-white-logo.png);
 }
 
+button {
+    height: 35px;
+    font-size: 20px;
+    border-radius: 12px;
+    background: #eb7a19;
+    color: white;
+    border: solid 0px;
+    width: 160px;
+    box-shadow: 5px 5px #00000055;
+    margin-bottom: 40px;
+}
+
+button:hover {
+    background: #c95e01;
+    box-shadow: 0px 0px #00000055;
+    transition: 0.2s;
+}
+
+.btn {
+    text-align: center;
+    display: none;
+}
 
 #ordem {
     height: 44px;
