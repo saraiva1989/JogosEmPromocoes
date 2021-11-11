@@ -3,7 +3,7 @@ carregarJogosUbisoft()
 
 function carregarJogosUbisoft() {
     document.getElementById('loading').style.display = 'block'
-    fetch("json/ubisoft.json?3").then(function (response) {
+    fetch("json/ubisoft.json?4").then(function (response) {
         response.json().then(function (data) {
             montarJogosUbisoft(data)
             document.getElementById('loading').style.display = 'none'
@@ -16,7 +16,7 @@ function carregarJogosUbisoft() {
 
 function carregarJogosSteam() {
     document.getElementById('loading').style.display = 'block'
-    fetch("json/steam.json?3").then(function (response) {
+    fetch("json/steam.json?4").then(function (response) {
         response.json().then(function (data) {
             montarJogosSteam(data)
             document.getElementById('loading').style.display = 'none'
@@ -57,7 +57,8 @@ function montarJogosUbisoft(data) {
 function montarJogosSteam(data) {
     divConteudo = document.getElementById('conteudo')
     htmlRetorno = ''
-    data.forEach(element => {
+    let newData = data.slice(0, 500)
+    newData.forEach(element => {
         htmlRetorno += `
 
                 <div class="card steam">
