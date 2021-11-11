@@ -2,42 +2,42 @@ var teste
 carregarJogosUbisoft()
 
 function carregarJogosUbisoft() {
-    document.getElementById('loading').style.display = 'block'
-    fetch("json/ubisoft.json?1").then(function (response) {
+    loading(true, 'Ubisoft')
+    fetch("json/ubisoft.json?2").then(function (response) {
         response.json().then(function (data) {
             montarJogosUbisoft(data)
-            document.getElementById('loading').style.display = 'none'
+            loading(false, 'Ubisoft')
         });
     }).catch(function (err) {
         console.error('Failed retrieving information', err);
-        document.getElementById('loading').style.display = 'none'
+        loading(false, 'Ubisoft')
     });
 }
 
 function carregarJogosSteam() {
-    document.getElementById('loading').style.display = 'block'
-    fetch("json/steam.json?1").then(function (response) {
+    loading(true, 'Steam')
+    fetch("json/steam.json?2").then(function (response) {
         response.json().then(function (data) {
             montarJogosSteam(data)
-            document.getElementById('loading').style.display = 'none'
+            loading(false, 'Steam')
         });
     }).catch(function (err) {
         console.error('Failed retrieving information', err);
-        document.getElementById('loading').style.display = 'none'
+        loading(false, 'Steam')
     });
 }
 
 
 function carregarJogosEpic() {
-    document.getElementById('loading').style.display = 'block'
-    fetch("json/epic.json?1").then(function (response) {
+    loading(true, 'Epic')
+    fetch("json/epic.json?2").then(function (response) {
         response.json().then(function (data) {
             montarJogosEpic(data)
-            document.getElementById('loading').style.display = 'none'
+            loading(false, 'Epic')
         });
     }).catch(function (err) {
         console.error('Failed retrieving information', err);
-        document.getElementById('loading').style.display = 'none'
+        loading(false, 'Epic')
     });
 }
 
@@ -116,4 +116,14 @@ function montarJogosEpic(data) {
     });
 
     divConteudo.innerHTML = htmlRetorno
+}
+
+function loading(status, loja) {
+    document.querySelector('#loja-selecionada h2').textContent = `Loja Selecionada: ${loja}`
+    if(status){
+        document.getElementById('loading').style.display = 'block'
+    }
+    else {
+        document.getElementById('loading').style.display = 'none'
+    }
 }
