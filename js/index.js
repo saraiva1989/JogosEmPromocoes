@@ -3,7 +3,7 @@ carregarJogosUbisoft()
 
 function carregarJogosUbisoft() {
     loading(true, 'Ubisoft')
-    fetch("json/ubisoft.json?2").then(function (response) {
+    fetch("json/ubisoft.json?3").then(function (response) {
         response.json().then(function (data) {
             montarJogosUbisoft(data)
             loading(false, 'Ubisoft')
@@ -16,7 +16,7 @@ function carregarJogosUbisoft() {
 
 function carregarJogosSteam() {
     loading(true, 'Steam')
-    fetch("json/steam.json?2").then(function (response) {
+    fetch("json/steam.json?3").then(function (response) {
         response.json().then(function (data) {
             montarJogosSteam(data)
             loading(false, 'Steam')
@@ -27,10 +27,23 @@ function carregarJogosSteam() {
     });
 }
 
+function carregarJogosGog() {
+    loading(true, 'GOG')
+    fetch("json/gog.json?3").then(function (response) {
+        response.json().then(function (data) {
+            montarJogosSteam(data)
+            loading(false, 'GOG')
+        });
+    }).catch(function (err) {
+        console.error('Failed retrieving information', err);
+        loading(false, 'GOG')
+    });
+}
+
 
 function carregarJogosEpic() {
     loading(true, 'Epic')
-    fetch("json/epic.json?2").then(function (response) {
+    fetch("json/epic.json?3").then(function (response) {
         response.json().then(function (data) {
             montarJogosEpic(data)
             loading(false, 'Epic')

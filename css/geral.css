@@ -55,6 +55,11 @@ body {
     background-image: url(../img/epic-white-logo.png);
 }
 
+.gog {
+    background-image: url(../img/gog-white-logo.png);
+}
+
+
 
 #lojas{
     display: grid;
