@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/geral.css?7">
     <script src="js/geral.js?7"></script>
-    <title>Ubisoft</title>
+    <title>Steam</title>
 </head>
-
 <body>
     <div class="loading" id="loading" style="display: none;">
         <div class="loader"></div>
@@ -17,7 +15,7 @@
     <div id="principal">
         <div id="header"></div>
         <div id="loja-selecionada">
-            <h2>Loja Selecionada: Ubisoft</h2>
+            <h2>Loja Selecionada: Steam</h2>
         </div>
 
         <div id="filtro">
@@ -31,16 +29,17 @@
         <div id="conteudo">
 
         </div>
-    </div>
 
-
-    
+        <div class="btn" id="btn-vermais">
+            <button onclick="verMais()">Ver mais</button>
+        </div>
 </body>
 
-<script>
 
-    let listaJogosData = []
-    carregarJogosAPI("json/ubisoft.json")
+<script>
+ let listaJogosData = []
+ let itensPagina = 0;
+    carregarJogosAPI("json/steam.json")
     function carregarJogosAPI(url) {
         loading(true)
         fetch(url).then(function (response) {
@@ -56,11 +55,12 @@
     }
 
     function montarJogos(data) {
+        data = data.slice(itensPagina, itensPagina + 200)
         divConteudo = document.getElementById('conteudo')
         htmlRetorno = ''
 
         data.forEach(element => { 
-            htmlRetorno += cardModeloUbisoft(element)
+            htmlRetorno += cardModeloPequeno(element)
         });
         divConteudo.innerHTML = htmlRetorno
     }
@@ -90,8 +90,14 @@ if (tipo == "nome") {
 }
 
 montarJogos(listaJogosData)
+    }
 
+    function verMais() {
+    itensPagina += 200
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    ordenacao('popular')
 }
+
 </script>
 
 </html>

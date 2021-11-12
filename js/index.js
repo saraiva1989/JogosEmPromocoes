@@ -2,6 +2,8 @@ var teste
 let listaJogosData
 let store
 let itensPagina = 0;
+let total = 0
+let paginas = 0
 carregarJogosUbisoft()
 
 function carregarJogos(url) {
@@ -9,6 +11,20 @@ function carregarJogos(url) {
     fetch(url + "?7").then(function (response) {
         response.json().then(function (data) {
             listaJogosData = data
+            montarJogos(listaJogosData)
+            loading(false)
+        });
+    }).catch(function (err) {
+        console.error('Failed retrieving information', err);
+        loading(false)
+    });
+}
+
+function carregarJogosAPI(url) {
+    loading(true)
+    fetch(url).then(function (response) {
+        response.json().then(function (data) {
+            listaJogosData = data.games
             montarJogos(listaJogosData)
             loading(false)
         });
@@ -30,13 +46,13 @@ function carregarJogosSteam() {
 
 function carregarJogosGog() {
     store = 'GOG'
-    carregarJogos("json/gog.json")
+    carregarJogosAPI("https://jogosempromocoes.azurewebsites.net/api/jogos/gog?ordenacao=popularidade&pagina=1")
 }
 
 
 function carregarJogosEpic() {
     store = 'Epic'
-    carregarJogos("json/epic.json")
+    carregarJogosAPI("https://jogosempromocoes.azurewebsites.net/api/jogos/epic?ordenacao=popularidade&pagina=0")
 }
 
 function montarJogos(data) {
@@ -67,8 +83,8 @@ function montarJogos(data) {
         }
 
         let precos = `                            
-        <p class="price"><span>${element.precoDesconto}</span>
-        <stroke>${element.precoOriginal}</stroke></p>`
+        <p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : element.precoDesconto.replace('.', ',')}</span>
+        <stroke>${element.precoOriginal.replace('.', ',')}</stroke></p>`
 
         let fecharCard = `</div></a></div>`
 

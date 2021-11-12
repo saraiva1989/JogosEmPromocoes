@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/geral.css?7">
+    <title>Promoções</title>
+</head>
+
+<body>
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+
+    </div>
+    <div id="principal">
+        <div class="topo">
+            <div id="lojas">
+                <div id="loja-ubisoft" class="botao-lojas btn-img ubisoft" onclick="carregarJogosUbisoft()">
+                </div>
+                <div id="loja-epic" class="botao-lojas btn-img epic" onclick="carregarJogosEpic()">
+                </div>
+                <div id="loja-steam" class="botao-lojas btn-img steam" onclick="carregarJogosSteam()">
+                </div>
+                <div id="loja-gog" class="botao-lojas btn-img gog" onclick="carregarJogosGog()">
+                </div>
+
+            </div>
+        </div>
+
+        <div id="loja-selecionada">
+            <h2>Loja Selecionada:</h2>
+        </div>
+
+        <div id="filtro">
+            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacao(this.value)">
+                <option value="popular" selected>Popularidade</option>
+                <option value="preco">Preço</option>
+                <option value="nome">Nome</option>
+            </select>
+        </div>
+
+        <div id="conteudo">
+            <!-- <div class="card">
+                <a href="https://google.com">
+                    <img src="https://store.ubi.com/dw/image/v2/ABBS_PRD/on/demandware.static/-/Sites-masterCatalog/default/dwbbc7ab19/images/large/5fc623ef0d253c3a1475adba.jpg?sw=300&sh=395&sm=fit"
+                        alt="capa" class="capa">
+                    <div class="container">
+                        <h2 class="titulo"><b>Assassins creed</b></h2>
+                        <p class="versao">Complete Edition</p>
+                        <p class="price"><span>12,00</span>
+                            <stroke>20,00</stroke>
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="https://google.com" target="_blank">
+                    <img src="https://store.ubi.com/dw/image/v2/ABBS_PRD/on/demandware.static/-/Sites-masterCatalog/default/dwbbc7ab19/images/large/5fc623ef0d253c3a1475adba.jpg?sw=300&sh=395&sm=fit"
+                        alt="capa" class="capa">
+                    <div class="container">
+                        <h2 class="titulo"><b>Assassins creed</b></h2>
+                        <p class="versao">Complete Edition</p>
+
+                        <p class="price"><span>12,00</span>
+                            <stroke>20,00</stroke>
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div> -->
+
+
+        </div>
+        <div class="btn" id="btn-vermais">
+            <button onclick="verMais()">Ver mais</button>
+        </div>
+    </div>
+
+        <script src="js/index.js?7"></script>
+</body>
+
+</html>
