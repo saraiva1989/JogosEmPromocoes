@@ -70,6 +70,7 @@ function cardModeloPequeno(element) {
 
 
 function ordenacaoApi(tipo, pagina) {
+    htmlRetorno = ''
     if (tipo == "popular") {
         carregarJogosAPI('popularidade', pagina)
     }
