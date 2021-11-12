@@ -46,7 +46,7 @@
             response.json().then(function (data) {
                 listaJogosData = data.games
                 pagina = data.pagina
-                total = data.total
+                total = data.totalPagina
                 montarJogos(listaJogosData)
                 loading(false)
             });
@@ -57,6 +57,9 @@
     }
 
     function montarJogos(data) {
+        if(total == 0){
+            document.getElementById('btn-vermais').style.display = 'none'
+        }
         divConteudo = document.getElementById('conteudo')
 
         data.forEach(element => {
@@ -68,7 +71,7 @@
     function verMais() {
         pagina++
         carregarJogosAPI(document.getElementById('ordem').value, pagina)
-        if(pagina == total) {
+        if(pagina >= total) {
             document.getElementById('btn-vermais').style.display = 'none'
         }
     }

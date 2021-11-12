@@ -32,16 +32,24 @@
 
         </div>
 
+        <div class="btn" id="btn-vermais">
+            <button onclick="verMais()">Ver mais</button>
+        </div>
         
 </body>
 
 <script>
+     let pagina = 0
+    let total = 0
+    let htmlRetorno = ''
     carregarJogosAPI('popularidade', 0)
     function carregarJogosAPI(ordenacao, pagina) {
         loading(true)
         fetch(`https://jogosempromocoes.azurewebsites.net/api/jogos/epic?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
             response.json().then(function (data) {
                 listaJogosData = data.games
+                pagina = data.pagina
+                total = data.totalPagina
                 montarJogos(listaJogosData)
                 loading(false)
             });
@@ -52,13 +60,22 @@
     }
 
     function montarJogos(data) {
+        if(total == 0){
+            document.getElementById('btn-vermais').style.display = 'none'
+        }
         divConteudo = document.getElementById('conteudo')
-        htmlRetorno = ''
-
         data.forEach(element => {
             htmlRetorno += cardModeloEpic(element)
         });
         divConteudo.innerHTML = htmlRetorno
+    }
+
+    function verMais() {
+        pagina++
+        carregarJogosAPI(document.getElementById('ordem').value, pagina)
+        if(pagina >= total) {
+            document.getElementById('btn-vermais').style.display = 'none'
+        }
     }
 
 </script>
