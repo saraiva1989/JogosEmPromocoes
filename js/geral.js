@@ -1,7 +1,7 @@
 carregarHeader()
 
 async function carregarHeader() {
-    await fetch("../header.html").then(function (response) {
+    await fetch("header.html").then(function (response) {
         response.text().then(function (data) {
             document.getElementById('header').innerHTML = data
         });
