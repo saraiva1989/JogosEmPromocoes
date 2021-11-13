@@ -24,7 +24,7 @@ Prontinho ajudou no projeto 🦖
 
 Caso não tenha a ISSUE e queira implementar algo, crie a ISSUE com o problema/implementação e comece a trabalhar nela
 
-## Não programador
+## Não Sabe Programar
 
 Se você não é programador e quer contribuir, pode criar uma ISSUE com sua ideia de melhoria ou notificando um problema.
 
