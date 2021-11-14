@@ -30,3 +30,8 @@ Se você não é programador e quer contribuir, pode criar uma ISSUE com sua ide
 
 # Observação
 Os dados são recuperados em tempo real das lojas EPIC, STEAM e GOG. Já as promoções da Ubisoft por hora são gerado através de script, ainda em avaliação de como automatizar.
+
+Para ter certeza que está em ambiente de DEV ao executar o projeto, valide se a tarja "ambiente dev" está aparecendo, caso contrario, você não está acessando o ambiente de DEV
+
+![image](https://user-images.githubusercontent.com/40599423/141688807-8c27047e-0828-46bf-b2ff-20761e66b176.png)
+
