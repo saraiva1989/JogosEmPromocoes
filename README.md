@@ -3,6 +3,7 @@
 Esse projeto tem como objetivo listar os jogos que estão em promoção nas lojas de jogos digitais mais populares.
 
 para acessar o projeto, acesse o site - https://saraiva1989.github.io/JogosEmPromocoes/
+
 para acessar o ambiente de dev, acesse o site - https://jogosempromocoesdev.netlify.app/
 
 ![image](https://user-images.githubusercontent.com/40599423/141598821-46bd35a9-cc4a-4162-942a-6bada88d4ad4.png)
