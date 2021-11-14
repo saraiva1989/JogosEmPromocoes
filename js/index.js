@@ -46,13 +46,13 @@ function carregarJogosSteam() {
 
 function carregarJogosGog() {
     store = 'GOG'
-    carregarJogosAPI("https://jogosempromocoes.azurewebsites.net/api/jogos/gog?ordenacao=popularidade&pagina=1")
+    carregarJogosAPI("https://jogosempromocoesdev.azurewebsites.net/api/jogos/gog?ordenacao=popularidade&pagina=1")
 }
 
 
 function carregarJogosEpic() {
     store = 'Epic'
-    carregarJogosAPI("https://jogosempromocoes.azurewebsites.net/api/jogos/epic?ordenacao=popularidade&pagina=0")
+    carregarJogosAPI("https://jogosempromocoesdev.azurewebsites.net/api/jogos/epic?ordenacao=popularidade&pagina=0")
 }
 
 function montarJogos(data) {

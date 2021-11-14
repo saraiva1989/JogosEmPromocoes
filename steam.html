@@ -43,7 +43,7 @@
     carregarJogosAPI('popularidade', 0)
     function carregarJogosAPI(ordenacao, pagina) {
         loading(true)
-        fetch(`https://jogosempromocoes.azurewebsites.net/api/jogos/steam?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
+        fetch(`https://jogosempromocoesdev.azurewebsites.net/api/jogos/steam?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
             response.json().then(function (data) {
                 listaJogosData = data.games
                 pagina = data.pagina
