@@ -201,6 +201,18 @@ a {
       margin: 20px;
   }
 
+  .ambiente-dev {
+    width: 225px;
+    height: 20px;
+    background-color: #ff0000;
+    transform: rotate(310deg);
+    position: absolute;
+    margin-top: 34px;
+    margin-left: -75px;
+    text-align: -webkit-center;
+    color: #fff;
+}
+
 
 
 /* CELULAR */
@@ -217,6 +229,11 @@ a {
         margin: 20px;
         width: 100px;
         height: 100px;
+    }
+
+    .ambiente-dev {
+        width: 159px;
+        margin-left: -42px;
     }
 
     

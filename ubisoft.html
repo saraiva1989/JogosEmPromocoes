@@ -10,6 +10,7 @@
     <title>Epic</title>
 </head>
 
+
 <body>
     <div class="loading" id="loading" style="display: none;">
         <div class="loader"></div>
@@ -17,11 +18,11 @@
     <div id="principal">
         <div id="header"></div>
         <div id="loja-selecionada">
-            <h2>Loja Selecionada: Epic</h2>
+            <h2>Loja Selecionada: Ubisoft</h2>
         </div>
 
         <div id="filtro">
-            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacaoApi(this.value, 0)">
+            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacao(this.value)">
                 <option value="popular" selected>Popularidade</option>
                 <option value="preco">Preço</option>
                 <option value="nome">Nome</option>
@@ -31,25 +32,21 @@
         <div id="conteudo">
 
         </div>
+    </div>
 
-        <div class="btn" id="btn-vermais">
-            <button onclick="verMais()">Ver mais</button>
-        </div>
-        
+
+    
 </body>
 
 <script>
-     let pagina = 0
-    let total = 0
-    let htmlRetorno = ''
-    carregarJogosAPI('popularidade', 0)
-    function carregarJogosAPI(ordenacao, pagina) {
+
+    let listaJogosData = []
+    carregarJogosAPI("json/ubisoft.json")
+    function carregarJogosAPI(url) {
         loading(true)
-        fetch(`https://jogosempromocoes.azurewebsites.net/api/jogos/epic?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
+        fetch(url).then(function (response) {
             response.json().then(function (data) {
-                listaJogosData = data.games
-                pagina = data.pagina
-                total = data.totalPagina
+                listaJogosData = data
                 montarJogos(listaJogosData)
                 loading(false)
             });
@@ -60,24 +57,42 @@
     }
 
     function montarJogos(data) {
-        if(total == 0){
-            document.getElementById('btn-vermais').style.display = 'none'
-        }
         divConteudo = document.getElementById('conteudo')
-        data.forEach(element => {
-            htmlRetorno += cardModeloEpic(element)
+        htmlRetorno = ''
+
+        data.forEach(element => { 
+            htmlRetorno += cardModeloUbisoft(element)
         });
         divConteudo.innerHTML = htmlRetorno
     }
 
-    function verMais() {
-        pagina++
-        carregarJogosAPI(document.getElementById('ordem').value, pagina)
-        if(pagina >= total) {
-            document.getElementById('btn-vermais').style.display = 'none'
-        }
-    }
+    function ordenacao(tipo) {
+if (tipo == "popular") {
+    listaJogosData.sort((a, b) => parseFloat(a.position) - parseFloat(b.position));
+}
 
+if (tipo == "preco") {
+    listaJogosData.sort((a, b) => parseFloat(a.precoDesconto.replace(',', '.')) - parseFloat(b.precoDesconto.replace(',', '.')));
+}
+
+if (tipo == "nome") {
+    listaJogosData.sort((a, b) => {
+        let fa = a.nome.toLocaleLowerCase(),
+            fb = b.nome.toLocaleLowerCase();
+
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
+montarJogos(listaJogosData)
+
+}
 </script>
 
 </html>
