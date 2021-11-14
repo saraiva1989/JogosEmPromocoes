@@ -1,15 +1,5 @@
 carregarHeader()
 
-async function carregarHeader() {
-    await fetch("header.html").then(function (response) {
-        response.text().then(function (data) {
-            document.getElementById('header').innerHTML = data
-        });
-    }).catch(function (err) {
-        console.error('Failed retrieving information', err);
-    });
-}
-
 function loading(status) {
     if (status) {
         document.getElementById('loading').style.display = 'block'
@@ -66,6 +56,24 @@ function cardModeloPequeno(element) {
                 </a>
             </div>
     `
+}
+
+function carregarHeader () {
+    let topo = `
+    <div class="topo">
+        <div class="ambiente-dev" id="ambiente-dev">Ambiente DEV</div>
+        <div id="lojas">
+            <a id="loja-epic" class="botao-lojas btn-img epic" href="index.html">
+            </a>
+            <a id="loja-ubisoft" class="botao-lojas btn-img ubisoft" href="ubisoft.html">
+            </a>
+            <a id="loja-steam" class="botao-lojas btn-img steam" href="steam.html">
+            </a>
+            <a id="loja-gog" class="botao-lojas btn-img gog" href="gog.html">
+            </a>
+        </div>
+    `
+    document.getElementById('header').innerHTML = topo
 }
 
 

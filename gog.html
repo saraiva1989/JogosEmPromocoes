@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/geral.css?3">
-    <script src="js/geral.js?3"></script>
+    <link rel="stylesheet" href="css/geral.css?4">
     <title>GOG</title>
 </head>
 <body>
@@ -33,6 +32,8 @@
                 <button onclick="verMais()">Ver mais</button>
             </div>
 </body>
+<script src="js/geral.js?4"></script>
+<script src="js/environment.js?4"></script>
 
 
 <script>
@@ -42,7 +43,7 @@
     carregarJogosAPI('popularidade', 1)
     function carregarJogosAPI(ordenacao, pagina) {
         loading(true)
-        fetch(`https://jogosempromocoes.azurewebsites.net/api/jogos/gog?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
+        fetch(`${urlAPIJogos}gog?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
             response.json().then(function (data) {
                 listaJogosData = data.games
                 pagina = data.pagina
