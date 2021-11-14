@@ -8,7 +8,7 @@ carregarJogosUbisoft()
 
 function carregarJogos(url) {
     loading(true)
-    fetch(url + "?2").then(function (response) {
+    fetch(url + "?3").then(function (response) {
         response.json().then(function (data) {
             listaJogosData = data
             montarJogos(listaJogosData)
@@ -46,13 +46,13 @@ function carregarJogosSteam() {
 
 function carregarJogosGog() {
     store = 'GOG'
-    carregarJogosAPI("https://jogosempromocoesdev.azurewebsites.net/api/jogos/gog?ordenacao=popularidade&pagina=1")
+    carregarJogosAPI("https://jogosempromocoes.azurewebsites.net/api/jogos/gog?ordenacao=popularidade&pagina=1")
 }
 
 
 function carregarJogosEpic() {
     store = 'Epic'
-    carregarJogosAPI("https://jogosempromocoesdev.azurewebsites.net/api/jogos/epic?ordenacao=popularidade&pagina=0")
+    carregarJogosAPI("https://jogosempromocoes.azurewebsites.net/api/jogos/epic?ordenacao=popularidade&pagina=0")
 }
 
 function montarJogos(data) {

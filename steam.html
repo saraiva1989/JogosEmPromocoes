@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/geral.css?2">
-    <script src="js/geral.js?2"></script>
+    <link rel="stylesheet" href="css/geral.css?3">
+    <script src="js/geral.js?3"></script>
     <title>Steam</title>
 </head>
 <body>
@@ -43,7 +43,7 @@
     carregarJogosAPI('popularidade', 0)
     function carregarJogosAPI(ordenacao, pagina) {
         loading(true)
-        fetch(`https://jogosempromocoesdev.azurewebsites.net/api/jogos/steam?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
+        fetch(`https://jogosempromocoes.azurewebsites.net/api/jogos/steam?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
             response.json().then(function (data) {
                 listaJogosData = data.games
                 pagina = data.pagina

@@ -11,8 +11,8 @@
     <meta property='og:image' id="ogimage" content='https://saraiva1989.github.io/JogosEmPromocoes/img/promocao.png'>
     <meta property='og:type' content='website' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/geral.css?2">
-    <script src="js/geral.js?2"></script>
+    <link rel="stylesheet" href="css/geral.css?3">
+    <script src="js/geral.js?3"></script>
     <title>Ubisoft</title>
 </head>
 
@@ -53,7 +53,7 @@
     carregarJogosAPI('popularidade', 0)
     function carregarJogosAPI(ordenacao, pagina) {
         loading(true)
-        fetch(`https://jogosempromocoesdev.azurewebsites.net/api/jogos/epic?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
+        fetch(`https://jogosempromocoes.azurewebsites.net/api/jogos/epic?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
             response.json().then(function (data) {
                 listaJogosData = data.games
                 pagina = data.pagina
