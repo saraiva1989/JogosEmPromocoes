@@ -3,10 +3,17 @@ init()
 
 function init() {
     let path = location.pathname;
+    if(path === '/') {
+        document.getElementsByName('index')[0].classList.add('botao-lojas-selecionado')
+        return
+    }
     let btnLojas = document.querySelectorAll('.botao-lojas')
     btnLojas.forEach(element => {
         if (path.includes(element.name)) {
             element.classList.add('botao-lojas-selecionado')
+        }
+        else{
+            
         }
     });
 }
