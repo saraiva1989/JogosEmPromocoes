@@ -1,4 +1,15 @@
 componenteHeader()
+init()
+
+function init() {
+    let path = location.pathname;
+    let btnLojas = document.querySelectorAll('.botao-lojas')
+    btnLojas.forEach(element => {
+        if (path.includes(element.name)) {
+            element.classList.add('botao-lojas-selecionado')
+        }
+    });
+}
 
 window.addEventListener("scroll", function () {
     let btnTopo = this.document.getElementById('voltar-topo')
@@ -81,13 +92,13 @@ function componenteHeader() {
         <div class="ambiente-dev" id="ambiente-dev">Ambiente DEV</div>
         
         <div id="lojas">
-            <a id="loja-epic" class="botao-lojas btn-img epic" href="index.html">
+            <a id="loja-epic" name="index" class="botao-lojas btn-img epic" href="index.html">
             </a>
-            <a id="loja-ubisoft" class="botao-lojas btn-img ubisoft" href="ubisoft.html">
+            <a id="loja-ubisoft" name="ubisoft" class="botao-lojas btn-img ubisoft" href="ubisoft.html">
             </a>
-            <a id="loja-steam" class="botao-lojas btn-img steam" href="steam.html">
+            <a id="loja-steam" name="steam" class="botao-lojas btn-img steam" href="steam.html">
             </a>
-            <a id="loja-gog" class="botao-lojas btn-img gog" href="gog.html">
+            <a id="loja-gog" name="gog" class="botao-lojas btn-img gog" href="gog.html">
             </a>
         </div>
     `
