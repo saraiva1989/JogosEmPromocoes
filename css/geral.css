@@ -46,6 +46,11 @@ body {
     transition: 0.3s;
 }
 
+.botao-lojas-selecionado {
+    background-color: black;
+    box-shadow: 0px 0px;
+}
+
 
 
 .btn-img {
