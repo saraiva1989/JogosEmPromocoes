@@ -214,6 +214,32 @@ a {
     display: none;
 }
 
+.voltar-topo {
+    width: 60px;
+    height: 60px;
+    background-color: #eb7a19;
+    border-radius: 45px;
+    right: 10px;
+    bottom: 10px;
+    position: fixed;
+    margin: -70px;
+}
+
+.voltar-topo:hover {
+    background: #c95e01;
+    box-shadow: 0px 0px #00000055;
+    transition: 0.2s;
+}
+
+.voltar-topo img {
+    width: 30px;
+    height: 30px;
+}
+
+.voltar-topo p {
+    text-align: center;
+}
+
 
 
 /* CELULAR */

@@ -1,4 +1,16 @@
-carregarHeader()
+componenteHeader()
+
+window.addEventListener("scroll", function () {
+    let btnTopo = this.document.getElementById('voltar-topo')
+    if (this.scrollY > 2000) {
+        btnTopo.style.margin = 0
+        btnTopo.style.transition = '0.7s' 
+    } else {
+        btnTopo.style.margin = '-70px'
+        btnTopo.style.transition = '0.7s' 
+    }
+})
+
 
 function loading(status) {
     if (status) {
@@ -58,10 +70,16 @@ function cardModeloPequeno(element) {
     `
 }
 
-function carregarHeader () {
+function componenteHeader() {
     let topo = `
     <div class="topo">
+        
+        <div id="voltar-topo" class="voltar-topo" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});">
+            <p><img src="img/topo.png" alt=""></p>
+        </div>
+
         <div class="ambiente-dev" id="ambiente-dev">Ambiente DEV</div>
+        
         <div id="lojas">
             <a id="loja-epic" class="botao-lojas btn-img epic" href="index.html">
             </a>
@@ -76,17 +94,16 @@ function carregarHeader () {
     document.getElementById('header').innerHTML = topo
 }
 
-
 function ordenacaoApi(tipo, pagina) {
     htmlRetorno = ''
     if (tipo == "popular") {
         carregarJogosAPI('popularidade', pagina)
     }
-    
+
     if (tipo == "preco") {
         carregarJogosAPI('preco', pagina)
     }
-    
+
     if (tipo == "nome") {
         carregarJogosAPI('nome', pagina)
     }
