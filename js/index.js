@@ -6,32 +6,22 @@ let total = 0
 let paginas = 0
 carregarJogosUbisoft()
 
-function carregarJogos(url) {
+async function carregarJogos(url) {
     loading(true)
-    fetch(url + "").then(function (response) {
-        response.json().then(function (data) {
-            listaJogosData = data
-            montarJogos(listaJogosData)
-            loading(false)
-        });
-    }).catch(function (err) {
-        console.error('Failed retrieving information', err);
-        loading(false)
-    });
+    let request = await fetch(url + "")
+    let data = await request.json()
+    listaJogosData = data
+    montarJogos(listaJogosData)
+    loading(false)
 }
 
-function carregarJogosAPI(url) {
+async function carregarJogosAPI(url) {
     loading(true)
-    fetch(url).then(function (response) {
-        response.json().then(function (data) {
-            listaJogosData = data.games
-            montarJogos(listaJogosData)
-            loading(false)
-        });
-    }).catch(function (err) {
-        console.error('Failed retrieving information', err);
-        loading(false)
-    });
+    let request = await fetch(url)
+    let data = await request.json()
+    listaJogosData = data.games
+    montarJogos(listaJogosData)
+    loading(false)
 }
 
 function carregarJogosUbisoft() {
@@ -99,9 +89,9 @@ function montarJogos(data) {
 
 
 function loading(status) {
-    if(store == 'Steam') {
+    if (store == 'Steam') {
         document.getElementById('btn-vermais').style.display = 'block'
-    }else {
+    } else {
         document.getElementById('btn-vermais').style.display = 'none'
     }
     itensPagina = 0

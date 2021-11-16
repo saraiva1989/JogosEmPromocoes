@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="css/geral.css">
     <title>Steam</title>
 </head>
+
 <body>
     <div class="loading" id="loading" style="display: none;">
         <div class="loader"></div>
@@ -18,7 +20,7 @@
         </div>
 
         <div id="filtro">
-            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacaoApi(this.value, 0)">
+            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacaoApi(this.value, 0, 'steam')">
                 <option value="popular" selected>Popularidade</option>
                 <option value="preco">Preço</option>
                 <option value="nome">Nome</option>
@@ -41,25 +43,10 @@
     let pagina = 0
     let total = 0
     let htmlRetorno = ''
-    carregarJogosAPI('popularidade', 0)
-    function carregarJogosAPI(ordenacao, pagina) {
-        loading(true)
-        fetch(`${urlAPIJogos}/steam?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
-            response.json().then(function (data) {
-                listaJogosData = data.games
-                pagina = data.pagina
-                total = data.totalPagina
-                montarJogos(listaJogosData)
-                loading(false)
-            });
-        }).catch(function (err) {
-            console.error('Failed retrieving information', err);
-            loading(false)
-        });
-    }
-
+    carregarJogosAPI('steam', 'ordenacao=popularidade&pagina=0')
+    
     function montarJogos(data) {
-        if(total == 0){
+        if (total == 0) {
             document.getElementById('btn-vermais').style.display = 'none'
         }
         divConteudo = document.getElementById('conteudo')
@@ -72,8 +59,8 @@
 
     function verMais() {
         pagina++
-        carregarJogosAPI(document.getElementById('ordem').value, pagina)
-        if(pagina >= total) {
+        carregarJogosAPI('steam', `ordenacao=${document.getElementById('ordem').value}&pagina=${pagina}`)
+        if (pagina >= total) {
             document.getElementById('btn-vermais').style.display = 'none'
         }
     }

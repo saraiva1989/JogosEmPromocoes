@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name='description' id="descricao" content='Site que lista os jogos que estão em promoção nas lojas digitais mais populares (STEAM, EPIC, GOG).'>
+    <meta name='description' id="descricao"
+        content='Site que lista os jogos que estão em promoção nas lojas digitais mais populares (STEAM, EPIC, GOG).'>
     <meta property='og:title' id="ogtitulo" content='Jogos em promoções' />
     <meta property='og:url' id="ogurlpost" content='https://saraiva1989.github.io/JogosEmPromocoes/' />
-    <meta property='og:description' id="ogdescricao" content='Site que lista os jogos que estão em promoção nas lojas digitais mais populares (STEAM, EPIC, GOG).'>
+    <meta property='og:description' id="ogdescricao"
+        content='Site que lista os jogos que estão em promoção nas lojas digitais mais populares (STEAM, EPIC, GOG).'>
     <meta property='og:image' id="ogimage" content='https://saraiva1989.github.io/JogosEmPromocoes/img/promocao.png'>
     <meta property='og:type' content='website' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +30,7 @@
         </div>
 
         <div id="filtro">
-            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacaoApi(this.value, 0)">
+            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacaoApi(this.value, 0, 'epic')">
                 <option value="popular" selected>Popularidade</option>
                 <option value="preco">Preço</option>
                 <option value="nome">Nome</option>
@@ -42,7 +44,7 @@
         <div class="btn" id="btn-vermais">
             <button onclick="verMais()">Ver mais</button>
         </div>
-        
+
 </body>
 <script src="js/geral.js"></script>
 <script src="js/environment.js"></script>
@@ -52,25 +54,10 @@
     let pagina = 0
     let total = 0
     let htmlRetorno = ''
-    carregarJogosAPI('popularidade', 0)
-    function carregarJogosAPI(ordenacao, pagina) {
-        loading(true)
-        fetch(`${urlAPIJogos}epic?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
-            response.json().then(function (data) {
-                listaJogosData = data.games
-                pagina = data.pagina
-                total = data.totalPagina
-                montarJogos(listaJogosData)
-                loading(false)
-            });
-        }).catch(function (err) {
-            console.error('Failed retrieving information', err);
-            loading(false)
-        });
-    }
-
+    carregarJogosAPI('epic', 'ordenacao=popularidade&pagina=0')
+    
     function montarJogos(data) {
-        if(total == 0){
+        if (total == 0) {
             document.getElementById('btn-vermais').style.display = 'none'
         }
         divConteudo = document.getElementById('conteudo')
@@ -82,8 +69,8 @@
 
     function verMais() {
         pagina++
-        carregarJogosAPI(document.getElementById('ordem').value, pagina)
-        if(pagina >= total) {
+        carregarJogosAPI('epic', `ordenacao=${document.getElementById('ordem').value}&pagina=${pagina}`)
+        if (pagina >= total) {
             document.getElementById('btn-vermais').style.display = 'none'
         }
     }
