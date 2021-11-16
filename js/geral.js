@@ -112,17 +112,27 @@ function componenteHeader() {
     document.getElementById('header').innerHTML = topo
 }
 
-function ordenacaoApi(tipo, pagina) {
+function ordenacaoApi(tipo, pagina, endpoint) {
     htmlRetorno = ''
-    if (tipo == "popular") {
-        carregarJogosAPI('popularidade', pagina)
-    }
+    carregarJogosAPI(endpoint, `ordenacao=${tipo}&pagina=${pagina}`)
+}
 
-    if (tipo == "preco") {
-        carregarJogosAPI('preco', pagina)
-    }
+async function carregarJogosAPI(endpoint, queryString) {
+    loading(true)
+    let request = await fetch(`${urlAPIJogos}${endpoint}?${queryString}`)
+    let data = await request.json()
+    listaJogosData = data.games
+    pagina = data.pagina
+    total = data.totalPagina
+    montarJogos(listaJogosData)
+    loading(false)
+}
 
-    if (tipo == "nome") {
-        carregarJogosAPI('nome', pagina)
-    }
+async function carregarJogosAPILocal(url) {
+    loading(true)
+    let request = await fetch(url)
+    let data = await request.json()
+    listaJogosData = data
+    montarJogos(listaJogosData)
+    loading(false)
 }

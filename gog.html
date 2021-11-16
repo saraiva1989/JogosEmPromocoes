@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,31 @@
     <link rel="stylesheet" href="css/geral.css">
     <title>GOG</title>
 </head>
+
 <body>
-        <div class="loading" id="loading" style="display: none;">
-            <div class="loader"></div>
+    <div class="loading" id="loading" style="display: none;">
+        <div class="loader"></div>
+    </div>
+    <div id="principal">
+        <div id="header"></div>
+        <div id="loja-selecionada">
+            <h2>Loja Selecionada: GOG</h2>
         </div>
-        <div id="principal">
-            <div id="header"></div>
-            <div id="loja-selecionada">
-                <h2>Loja Selecionada: GOG</h2>
-            </div>
-    
-            <div id="filtro">
-                <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacaoApi(this.value, 1)">
-                    <option value="popular" selected>Popularidade</option>
-                    <option value="nome">Nome</option>
-                </select>
-            </div>
-    
-            <div id="conteudo">
-    
-            </div>
-    
-            <div class="btn" id="btn-vermais">
-                <button onclick="verMais()">Ver mais</button>
-            </div>
+
+        <div id="filtro">
+            <span>Ordenar por:</span> <select name="ordem" id="ordem" onchange="ordenacaoApi(this.value, 1, 'gog')">
+                <option value="popular" selected>Popularidade</option>
+                <option value="nome">Nome</option>
+            </select>
+        </div>
+
+        <div id="conteudo">
+
+        </div>
+
+        <div class="btn" id="btn-vermais">
+            <button onclick="verMais()">Ver mais</button>
+        </div>
 </body>
 <script src="js/geral.js"></script>
 <script src="js/environment.js"></script>
@@ -40,25 +42,10 @@
     let pagina = 1
     let total = 0
     let htmlRetorno = ''
-    carregarJogosAPI('popularidade', 1)
-    function carregarJogosAPI(ordenacao, pagina) {
-        loading(true)
-        fetch(`${urlAPIJogos}gog?ordenacao=${ordenacao}&pagina=${pagina}`).then(function (response) {
-            response.json().then(function (data) {
-                listaJogosData = data.games
-                pagina = data.pagina
-                total = data.totalPagina
-                montarJogos(listaJogosData)
-                loading(false)
-            });
-        }).catch(function (err) {
-            console.error('Failed retrieving information', err);
-            loading(false)
-        });
-    }
+    carregarJogosAPI('gog', 'ordenacao=popularidade&pagina=1')
 
     function montarJogos(data) {
-        if(total == 0){
+        if (total == 0) {
             document.getElementById('btn-vermais').style.display = 'none'
         }
         divConteudo = document.getElementById('conteudo')
@@ -71,8 +58,8 @@
 
     function verMais() {
         pagina++
-        carregarJogosAPI(document.getElementById('ordem').value, pagina)
-        if(pagina >= total) {
+        carregarJogosAPI('gog', `ordenacao=${document.getElementById('ordem').value}&pagina=${pagina}`)
+        if (pagina >= total) {
             document.getElementById('btn-vermais').style.display = 'none'
         }
     }
