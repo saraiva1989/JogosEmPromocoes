@@ -3,7 +3,7 @@ init()
 
 function init() {
     let path = location.pathname;
-    if(path === '/') {
+    if (path === '/') {
         document.getElementsByName('index')[0].classList.add('botao-lojas-selecionado')
         return
     }
@@ -12,8 +12,8 @@ function init() {
         if (path.includes(element.name)) {
             element.classList.add('botao-lojas-selecionado')
         }
-        else{
-            
+        else {
+
         }
     });
 }
@@ -22,10 +22,10 @@ window.addEventListener("scroll", function () {
     let btnTopo = this.document.getElementById('voltar-topo')
     if (this.scrollY > 2000) {
         btnTopo.style.margin = 0
-        btnTopo.style.transition = '0.7s' 
+        btnTopo.style.transition = '0.7s'
     } else {
         btnTopo.style.margin = '-70px'
-        btnTopo.style.transition = '0.7s' 
+        btnTopo.style.transition = '0.7s'
     }
 })
 
@@ -40,7 +40,8 @@ function loading(status) {
 }
 
 function cardModeloUbisoft(element) {
-    return `
+    try {
+        return `
             <div class="card">
                 <a href="${element.linkLoja}" target="_blank">
                     <img src="${element.capa}" loading=lazy alt="capa" class="capa">
@@ -54,6 +55,10 @@ function cardModeloUbisoft(element) {
                 </a>
             </div>
     `
+    }
+    catch (error) {
+
+    }
 }
 
 function cardModeloEpic(element) {
