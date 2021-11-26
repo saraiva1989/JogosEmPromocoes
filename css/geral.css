@@ -163,6 +163,10 @@ button:hover {
     object-fit: contain
   }
 
+  .fundo-imagem {
+      background-color: #000000;
+  }
+
   #conteudo {
     display: flex;
     flex-wrap: wrap;

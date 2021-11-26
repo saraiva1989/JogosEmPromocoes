@@ -81,7 +81,9 @@ function cardModeloComparaPreco(element) {
     return `
             <div class="card">
                 <a href="${element.linkLoja}" target="_blank">
-                    <img src="${element.capa}" loading=lazy alt="capa" class="capa-pesquisa">
+                    <div class="fundo-imagem">
+                        <img src="${element.capa}" loading=lazy alt="capa" class="capa-pesquisa">
+                    </div>
                     <div class="container">
                         <h2 class="titulo"><b>${element.nome.substr(0, 55)}</b></h2>
                         <h2 class="titulo"><b>Loja: </b>${element.loja}</h2>
