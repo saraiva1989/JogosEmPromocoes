@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/geral.css">
+
+    <title>Comparador de preço</title>
+</head>
+
+<body>
+    <div id="voltar-topo" class="voltar-topo" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});">
+        <p><img src="img/topo.png" alt=""></p>
+    </div>
+
+    <div class="ambiente-dev" id="ambiente-dev" style="display: none;">Ambiente DEV</div>
+    <div class="loading" id="loading" style="display: none;">
+        <div class="loader"></div>
+    </div>
+    <div id="principal">
+        <div class="btn opcoes-topo" id="opcoes-topo">
+            <button onclick="window.location.href='index.html'">Promoções</button>
+            <button onclick="window.location.href='comparar-preco.html'">Comparar Preço</button>
+        </div>
+        <div class="info">
+            <h1>O que é comparar preço</h1>
+            <p>Essa funcionalidade permite você pesquisar um jogo, e ao pesquisar irá listar ele em todas as lojas
+                com seus respectivos valores. Assim será possivel escolhar a loja com melhor preço para comprar.
+            </p>
+        </div>
+        <div class="pesquisa">
+            <input type="text" placeholder="Coloque o nome do jogo" class="input-jogo" id="input-nome"
+                onkeypress="handle(event)">
+            <button onclick="pesquisarPorNome()">Pesquisar</button>
+        </div>
+        <div id="conteudo">
+        </div>
+    </div>
+
+    <script src="js/geral.js"></script>
+    <script src="js/environment.js"></script>
+    <script>
+       
+    </script>
+</body>
+
+</html>

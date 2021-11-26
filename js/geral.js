@@ -77,6 +77,23 @@ function cardModeloEpic(element) {
     `
 }
 
+function cardModeloComparaPreco(element) {
+    return `
+            <div class="card">
+                <a href="${element.linkLoja}" target="_blank">
+                    <img src="${element.capa}" loading=lazy alt="capa" class="capa-pesquisa">
+                    <div class="container">
+                        <h2 class="titulo"><b>${element.nome.substr(0, 55)}</b></h2>
+                        <h2 class="titulo"><b>Loja: </b>${element.loja}</h2>
+                        <p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
+                            <stroke>${element.precoOriginal.replace('.', ',')}</stroke>
+                        </p>
+                    </div>
+                </a>
+            </div>
+    `
+}
+
 function cardModeloPequeno(element) {
     return `
             <div class="card steam">
@@ -96,7 +113,10 @@ function cardModeloPequeno(element) {
 function componenteHeader() {
     let topo = `
     <div class="topo">
-        
+        <div class="btn opcoes-topo" id="opcoes-topo">
+            <button onclick="window.location.href='index.html'">Promoções</button>
+            <button onclick="window.location.href='comparar-preco.html'">Comparar Preço</button>
+        </div>
         <div id="voltar-topo" class="voltar-topo" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});">
             <p><img src="img/topo.png" alt=""></p>
         </div>
@@ -114,6 +134,9 @@ function componenteHeader() {
             </a>
         </div>
     `
+    if(document.getElementById('header') == null) {
+        return
+    }
     document.getElementById('header').innerHTML = topo
 }
 
@@ -140,4 +163,29 @@ async function carregarJogosAPILocal(url) {
     listaJogosData = data
     montarJogos(listaJogosData)
     loading(false)
+}
+
+
+async function pesquisarPorNome() {
+    loading(true)
+    let divConteudo = document.getElementById('conteudo')
+    let htmlRetorno = ''
+    let nome = document.getElementById('input-nome').value
+    let request = await fetch(`https://jogosempromocoesdev.azurewebsites.net/api/jogos/comparapreco?nome=${nome}`)
+    let data = await request.json()
+
+    data.games.forEach(element => {
+        htmlRetorno += cardModeloComparaPreco(element)
+    });
+    divConteudo.innerHTML = htmlRetorno
+
+    loading(false)
+    console.log(data)
+}
+
+function handle(e) {
+    if (e.keyCode === 13) {
+        e.preventDefault(); // Ensure it is only this code that runs
+        pesquisarPorNome()
+    }
 }

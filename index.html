@@ -44,7 +44,7 @@
         <div class="btn" id="btn-vermais">
             <button onclick="verMais()">Ver mais</button>
         </div>
-
+    </div>
 </body>
 <script src="js/geral.js"></script>
 <script src="js/environment.js"></script>
@@ -55,7 +55,7 @@
     let total = 0
     let htmlRetorno = ''
     carregarJogosAPI('epic', 'ordenacao=popularidade&pagina=0')
-    
+
     function montarJogos(data) {
         if (total == 0) {
             document.getElementById('btn-vermais').style.display = 'none'
