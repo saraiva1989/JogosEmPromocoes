@@ -78,6 +78,18 @@ function cardModeloEpic(element) {
 }
 
 function cardModeloComparaPreco(element) {
+
+    let preco = ''
+
+    if (element.percentualDesconto == 0 && element.precoDesconto == 0) {
+        preco = `<p class="price"><span>${"R$ " + element.precoOriginal.replace('.', ',')}</span></p>`
+    }
+    else {
+        preco = `<p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
+                    <stroke>${element.precoOriginal.replace('.', ',')}</stroke>
+                </p>`
+    }
+
     return `
             <div class="card">
                 <a href="${element.linkLoja}" target="_blank">
@@ -87,9 +99,7 @@ function cardModeloComparaPreco(element) {
                     <div class="container">
                         <h2 class="titulo"><b>${element.nome.substr(0, 55)}</b></h2>
                         <h2 class="titulo"><b>Loja: </b>${element.loja}</h2>
-                        <p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
-                            <stroke>${element.precoOriginal.replace('.', ',')}</stroke>
-                        </p>
+                        ${preco}
                     </div>
                 </a>
             </div>
@@ -136,7 +146,7 @@ function componenteHeader() {
             </a>
         </div>
     `
-    if(document.getElementById('header') == null) {
+    if (document.getElementById('header') == null) {
         return
     }
     document.getElementById('header').innerHTML = topo
