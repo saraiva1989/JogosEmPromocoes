@@ -81,7 +81,7 @@ function cardModeloComparaPreco(element) {
 
     let preco = ''
 
-    if (element.percentualDesconto == 0 && element.precoDesconto == 0) {
+    if ((element.percentualDesconto == 0 && element.precoDesconto == 0) || (element.precoDesconto == element.precoOriginal)) {
         preco = `<p class="price"><span>${"R$ " + element.precoOriginal.replace('.', ',')}</span></p>`
     }
     else {
