@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/geral.css">
+
+    <title>Favoritos</title>
+</head>
+
+<body>
+    <div id="voltar-topo" class="voltar-topo" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});">
+        <p><img src="img/topo.png" alt=""></p>
+    </div>
+
+    <div class="ambiente-dev" id="ambiente-dev" style="display: none;">Ambiente DEV</div>
+    <div class="loading" id="loading" style="display: none;">
+        <div class="loader"></div>
+    </div>
+    <div id="principal">
+        <div class="btn opcoes-topo" id="opcoes-topo">
+            <button onclick="window.location.href='index.html'">Promoções</button>
+            <button onclick="window.location.href='comparar-preco.html'">Comparar Preço</button>
+            <button onclick="window.location.href='favoritos.html'">Favoritos</button>
+        </div>
+        <div id="conteudo">
+        </div>
+    </div>
+
+    <script src="js/geral.js"></script>
+    <script src="js/environment.js"></script>
+    <script>
+
+        favoritosInit()
+        function favoritosInit() {
+            let favoritos = JSON.parse(localStorage.getItem('listaFavoritos'))
+            if(favoritos == null) {
+                return
+            }
+            let divConteudo = document.getElementById('conteudo')
+            let htmlRetorno = ''
+
+            favoritos.forEach(element => {
+                htmlRetorno += cardModeloFavorito(element)
+            });
+
+            divConteudo.innerHTML = htmlRetorno
+        }
+
+        function cardModeloFavorito(element) {
+            return `
+           
+        <div class="card favorito">
+            <a href="comparar-preco.html?${element.termoPesquisa}" target="_blank">
+                <div class="fundo-imagem">
+                    <img src="${element.imagem}" loading=lazy alt="capa" class="capa-pesquisa">
+                </div>
+            <a href="comparar-preco.html?${element.termoPesquisa}" target="_blank">
+                <div class="container">
+                    <h2 class="titulo"><b>${element.nome.substr(0, 55)}</b></h2>
+                </div>
+            </a>
+                <div class="lixeira">
+                    <img onclick="removerFavorito('${element.termoPesquisa}')" src="img/trash.png"><img>
+                </div>
+        </div>
+        `
+        }
+
+        function removerFavorito(itemFavorito) {
+            listaFavoritos = JSON.parse(localStorage.listaFavoritos)
+            listaFavoritos = listaFavoritos.filter(x => x.termoPesquisa != itemFavorito)
+            localStorage.setItem('listaFavoritos', JSON.stringify(listaFavoritos))
+
+            favoritosInit()
+        }
+    </script>
+</body>
+
+</html>
