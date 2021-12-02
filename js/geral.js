@@ -128,6 +128,7 @@ function componenteHeader() {
         <div class="btn opcoes-topo" id="opcoes-topo">
             <button onclick="window.location.href='index.html'">Promoções</button>
             <button onclick="window.location.href='comparar-preco.html'">Comparar Preço</button>
+            <button onclick="window.location.href='favoritos.html'">Favoritos</button>
         </div>
         <div id="voltar-topo" class="voltar-topo" onclick="window.scrollTo({top: 0,left: 0,behavior: 'smooth'});">
             <p><img src="img/topo.png" alt=""></p>
@@ -183,6 +184,7 @@ async function pesquisarPorNome() {
     let divConteudo = document.getElementById('conteudo')
     let htmlRetorno = ''
     let nome = document.getElementById('input-nome').value
+    localStorage.setItem('ultimaPesquisa', nome)
     let request = await fetch(`https://jogosempromocoesdev.azurewebsites.net/api/jogos/comparapreco?nome=${nome}`)
     let data = await request.json()
 
@@ -200,4 +202,33 @@ function handle(e) {
         e.preventDefault(); // Ensure it is only this code that runs
         pesquisarPorNome()
     }
+}
+
+function salvarFavoritos() {
+    if(document.querySelector('#conteudo').textContent.trim().length == 0) {
+        return
+    }
+    
+    let listaFavoritos = []
+    
+    if(localStorage.getItem('listaFavoritos') != null) {
+     listaFavoritos = JSON.parse(localStorage.getItem('listaFavoritos'))
+    }
+    
+    if(listaFavoritos.find(x => x.termoPesquisa == localStorage.getItem('ultimaPesquisa')) !== undefined) {
+        return
+    }
+
+    let img = document.querySelector('#conteudo img').src
+    let nome = document.querySelector('#conteudo .titulo').textContent
+    let itemFavorito = {imagem: img, nome: nome, termoPesquisa: localStorage.getItem('ultimaPesquisa')}
+    
+    listaFavoritos.push(itemFavorito)
+    localStorage.setItem('listaFavoritos', JSON.stringify(listaFavoritos))
+
+    let toast = document.getElementById('toast')
+
+    toast.classList.add('toastShow')
+    setInterval(function(){     toast.classList.remove('toastShow')  }, 3000);
+
 }

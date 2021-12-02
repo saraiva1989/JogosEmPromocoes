@@ -19,10 +19,14 @@
     <div class="loading" id="loading" style="display: none;">
         <div class="loader"></div>
     </div>
+    <div id="toast" class="toast"><b>Jogo adicionado aos favoritos!</b></div>
+
     <div id="principal">
         <div class="btn opcoes-topo" id="opcoes-topo">
             <button onclick="window.location.href='index.html'">Promoções</button>
             <button onclick="window.location.href='comparar-preco.html'">Comparar Preço</button>
+            <button onclick="window.location.href='favoritos.html'">Favoritos</button>
+
         </div>
         <div class="info">
             <h1>O que é comparar preço</h1>
@@ -34,6 +38,7 @@
             <input type="text" placeholder="Coloque o nome do jogo" class="input-jogo" id="input-nome"
                 onkeypress="handle(event)">
             <button onclick="pesquisarPorNome()">Pesquisar</button>
+            <button onclick="salvarFavoritos()">Salvar Favoritos</button>
         </div>
         <div id="conteudo">
         </div>
@@ -43,6 +48,16 @@
     <script src="js/environment.js"></script>
     <script>
        
+       compararPrecoInit()
+       function compararPrecoInit() {
+           let pesquisa = decodeURI(location.search.replace('?','')) 
+           if(pesquisa == '') {
+               return
+           }
+           document.getElementById('input-nome').value = pesquisa
+           pesquisarPorNome()
+
+       }
     </script>
 </body>
 
