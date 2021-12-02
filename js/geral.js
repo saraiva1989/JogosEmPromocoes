@@ -185,7 +185,7 @@ async function pesquisarPorNome() {
     let htmlRetorno = ''
     let nome = document.getElementById('input-nome').value
     localStorage.setItem('ultimaPesquisa', nome)
-    let request = await fetch(`https://jogosempromocoesdev.azurewebsites.net/api/jogos/comparapreco?nome=${nome}`)
+    let request = await fetch(`${urlAPIJogos}/comparapreco?nome=${nome}`)
     let data = await request.json()
 
     data.games.forEach(element => {
