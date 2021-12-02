@@ -125,7 +125,7 @@ function cardModeloPequeno(element) {
 function componenteHeader() {
     let topo = `
     <div class="topo">
-        <div class="btn opcoes-topo" id="opcoes-topo">
+        <div class="btn opcoes-topo" id="opcoes-topo" style="display:none">
             <button onclick="window.location.href='index.html'">Promoções</button>
             <button onclick="window.location.href='comparar-preco.html'">Comparar Preço</button>
             <button onclick="window.location.href='favoritos.html'">Favoritos</button>
