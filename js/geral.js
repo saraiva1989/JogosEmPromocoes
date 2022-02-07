@@ -48,9 +48,9 @@ function cardModeloUbisoft(element) {
                     <div class="container">
                         <h2 class="titulo"><b>${element.nome.substr(0, 55)}</b></h2>
                         <p class="versao">${element.versao}</p>
-                        <p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
+                        <div class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
                             <stroke>${element.precoOriginal.replace('.', ',')}</stroke>
-                        </p>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -68,9 +68,9 @@ function cardModeloEpic(element) {
                     <img src="${element.capa}" loading=lazy alt="capa" class="capa">
                     <div class="container">
                         <h2 class="titulo"><b>${element.nome.substr(0, 55)}</b></h2>
-                        <p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
+                        <div class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
                             <stroke>${element.precoOriginal.replace('.', ',')}</stroke>
-                        </p>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -82,12 +82,12 @@ function cardModeloComparaPreco(element) {
     let preco = ''
 
     if ((element.percentualDesconto == 0 && element.precoDesconto == 0) || (element.precoDesconto == element.precoOriginal)) {
-        preco = `<p class="price"><span>${"R$ " + element.precoOriginal.replace('.', ',')}</span></p>`
+        preco = `<div class="price"><span>${"R$ " + element.precoOriginal.replace('.', ',')}</span></div>`
     }
     else {
-        preco = `<p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
+        preco = `<div class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
                     <stroke>${element.precoOriginal.replace('.', ',')}</stroke>
-                </p>`
+                </div>`
     }
 
     return `
@@ -113,9 +113,9 @@ function cardModeloPequeno(element) {
                     <img src="${element.capa}" loading=lazy alt="capa" class="capa">
                     <div class="container">
                         <h2 class="titulo"><b>${element.nome.substr(0, 55)}</b></h2>
-                        <p class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
+                        <div class="price"><span>${element.precoDesconto == 0 ? "Gratuito" : "R$ " + element.precoDesconto.replace('.', ',')}</span>
                             <stroke>${element.precoOriginal.replace('.', ',')}</stroke>
-                        </p>
+                        </div>
                     </div>
                 </a>
             </div>
@@ -139,11 +139,11 @@ function componenteHeader() {
         <div id="lojas">
             <a id="loja-epic" name="index" class="botao-lojas btn-img epic" href="index.html">
             </a>
-            <a id="loja-ubisoft" name="ubisoft" class="botao-lojas btn-img ubisoft" href="ubisoft.html">
-            </a>
             <a id="loja-steam" name="steam" class="botao-lojas btn-img steam" href="steam.html">
             </a>
             <a id="loja-gog" name="gog" class="botao-lojas btn-img gog" href="gog.html">
+            </a>
+            <a id="loja-ubisoft" name="ubisoft" class="botao-lojas btn-img ubisoft" href="ubisoft.html">
             </a>
         </div>
     `
