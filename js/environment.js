@@ -1,6 +1,6 @@
 var urlAPIJogos = ""
 const arrayHostDev = ["jogosempromocoesdev.netlify.app", "localhost:5500", "127.0.0.1:5500", "192.168.31.25:5500"]
-const arrayHostProd = ["saraiva1989.github.io"]
+const arrayHostProd = ["saraiva1989.github.io", "saraiva89.com"]
 urlApi()
 
 function urlApi() {
